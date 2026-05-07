@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $db   = "alumni";
-$user = "administrator_user";
+$user = "alumni_user";
 $pass = "securepass";
 
 try {
