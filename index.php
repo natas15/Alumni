@@ -7,16 +7,20 @@
     <title>Alumni - Home</title>
 </head>
 <body>
-<header> 
-    <img src="img/alumni-logo.png" alt="Alumni Logo" class="logo">
-    <nav class="navbar">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+<header>
+    <?php include 'includes/nav.php'; ?>
 </header>
+<main>
+<section class="hero">
+    <div class="hero-top">
+        <div class="hero-left">
+            <h2>Sign up now<br>for Alumni</h2>
+            <p>Stay connected with fellow graduates or with your old teachers(if you like them) and never miss an event or opportunity again.</p>
+            <a href="#" class="hero-btn">Sign up/Log in</a>
+        </div>
+        <div class="hero-right">Stay<br>connected with<br>yo homies!</div>
+    </div>
+</section>
+</main>
 </body>
 </html>
