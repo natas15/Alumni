@@ -8,26 +8,19 @@
 </head>
 <body>
 <header>
-    <a href="index.php">
-        <img src="img/alumni-logo.png" alt="Alumni Logo" class="logo">
-    </a>
-    <nav class="navbar">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Events</a></li>
-        </ul>
-    </nav>
-    <nav class="navbar-util">
-        <a href="#">Contact</a>
-        <a href="#">Login</a>
-        <button class="search-btn" aria-label="Search">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="11" cy="11" r="7"/>
-                <line x1="16.5" y1="16.5" x2="22" y2="22"/>
-            </svg>
-        </button>
-    </nav>
+    <?php include 'includes/nav.php'; ?>
 </header>
+<main>
+<section class="hero">
+    <div class="hero-top">
+        <div class="hero-left">
+            <h2>Sign up now<br>for Alumni</h2>
+            <p>Stay connected with fellow graduates or with your old teachers(if you like them) and never miss an event or opportunity again.</p>
+            <a href="#" class="hero-btn">Sign up/Log in</a>
+        </div>
+        <div class="hero-right">Stay<br>connected with<br>yo homies!</div>
+    </div>
+</section>
+</main>
 </body>
 </html>
