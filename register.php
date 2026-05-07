@@ -11,15 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email      = trim($_POST['email'] ?? '');
     $wachtwoord = $_POST['wachtwoord'] ?? '';
     $confirm    = $_POST['confirm_wachtwoord'] ?? '';
-    $straatnaam = trim($_POST['Straatnaam'] ?? '');
-    $huisnummer = trim($_POST['Huisnummer'] ?? '');
-    $postcode   = trim($_POST['Postcode'] ?? '');
-    $plaats     = trim($_POST['Plaats'] ?? '');
 
     // ── Lege velden ──────────────────────────────────────────────────────────
     if (
         empty($voornaam) || empty($achternaam) || empty($email) || empty($wachtwoord)
-        || empty($straatnaam) || empty($huisnummer) || empty($postcode) || empty($plaats)
     ) {
         $error = "Vul alle velden in.";
 
@@ -32,23 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // ── E-mailadres ───────────────────────────────────────────────────────────
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 100) {
         $error = "Ongeldig e-mailadres (max. 100 tekens).";
-
-        // ── Straatnaam: letters, spaties en koppeltekens — GEEN cijfers, max 100 ─
-    } elseif (!preg_match('/^[A-Za-zÀ-ÖØ-öø-ÿ\s\-\.]{2,100}$/', $straatnaam)) {
-        $error = "Straatnaam mag geen cijfers bevatten en moet 2–100 tekens zijn.";
-
-        // ── Huisnummer: cijfers optioneel gevolgd door een toevoeging (bijv. 12A) ─
-    } elseif (!preg_match('/^\d{1,5}[A-Za-z]{0,4}$/', $huisnummer)) {
-        $error = "Huisnummer moet beginnen met cijfers en mag een korte toevoeging hebben (bijv. 12 of 12A).";
-
-        // ── Postcode: Nederlandse postcode — 4 cijfers, spatie optioneel, 2 letters
-    } elseif (!preg_match('/^\d{4}\s?[A-Za-z]{2}$/', $postcode)) {
-        $error = "Postcode moet een geldige Nederlandse postcode zijn (bijv. 1234 AB).";
-
-        // ── Plaats: alleen letters, spaties, koppeltekens, max 100 ───────────────
-    } elseif (!preg_match('/^[A-Za-zÀ-ÖØ-öø-ÿ\s\-]{2,100}$/', $plaats)) {
-        $error = "Plaatsnaam mag geen cijfers bevatten en moet 2–100 tekens zijn.";
-
         // ── Wachtwoord ────────────────────────────────────────────────────────────
     } elseif (!preg_match('/^(?=.*[A-Za-z])(?=.*\d).{8,72}$/', $wachtwoord)) {
         $error = "Wachtwoord moet minimaal 8 tekens bevatten met minstens één letter en één cijfer.";
@@ -65,10 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $hashed = password_hash($wachtwoord, PASSWORD_DEFAULT);
 
                 $stmt = $pdo->prepare("
-                    INSERT INTO leerlingen (voornaam, achternaam, email, wachtwoord, Straatnaam, Huisnummer, Postcode, Plaats)
+                    INSERT INTO leerlingen (voornaam, achternaam, email, wachtwoord)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 ");
-                $stmt->execute([$voornaam, $achternaam, $email, $hashed, $straatnaam, $huisnummer, $postcode, $plaats]);
+                $stmt->execute([$voornaam, $achternaam, $email, $hashed]);
 
                 $success = "Account succesvol aangemaakt!";
             }
