@@ -95,11 +95,13 @@ header {
     stroke-width: 2;
 }
 
+/* ── Hero ── */
 .hero {
     background: #0a3d35;
     width: 100%;
     padding: 50px 60px;
 }
+
 .hero-top {
     display: flex;
     justify-content: space-between;
@@ -153,4 +155,84 @@ header {
     padding-bottom: 0;
 }
 
+/* ── Cards Section ── */
+.cards-section {
+    background: #fff;
+    padding: 60px 60px 80px;
+}
 
+.cards-header {
+    margin-bottom: 36px;
+}
+
+.cards-header h2 {
+    font-size: 48px;
+    font-weight: 900;
+    color: #111;
+    line-height: 1.1;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-image img {
+    transform: scale(1.04);
+}
+
+.card-body {
+    background: #111;
+    color: #fff;
+    padding: 28px 28px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-body h3 {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.card-body p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    flex: 1;
+}
+
+.card-arrow {
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #fff;
+    align-self: flex-end;
+}
